@@ -1,5 +1,5 @@
 {
-  "name": "basta-de-enganos",
+  "name": "Essayly",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,16 +12,17 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vichentito/basta-de-enganos.git"
+    "url": "git+https://github.com/ElZombieIsra/essayly.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Vichentito/basta-de-enganos/issues"
+    "url": "https://github.com/ElZombieIsra/essayly/issues"
   },
-  "homepage": "https://github.com/Vichentito/basta-de-enganos#readme"
+  "homepage": "https://github.com/ElZombieIsra/essayly#readme"
 }
