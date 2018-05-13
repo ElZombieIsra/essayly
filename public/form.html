@@ -1,0 +1,69 @@
+
+
+	<div class="loader">
+      <button type="button" onclick="conectarChat()">Conectarse</button>
+  	</div>
+	<section id="cajita">
+		<div id="opciones">
+			<div class="container">
+				<div class="row">
+					<div class="col-10" id="mierda"><!--toma nota eliminar mierda-->
+						<table class="table table-sm table-striped" id="Tabla-juego">
+							<thead class="badge-primary">
+								<th scope="col">Letra</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Apellido</th>
+								<th scope="col">Cosa</th>
+								<th scope="col">Animal</th>
+								<th scope="col">Flor o Fruto</th>
+								<th scope="col">Color</th>
+								<th scope="col">País o Ciudad</th>
+								<th scope="col">Película o serie</th>
+								<th scope="col">Marca</th>
+							</thead>
+							<tbody>
+								<tr>
+									<th>A</th>
+									<td><input type="text" name="" id="nom"></td>
+									<td><input type="text" name="" id="ap"></td>
+									<td><input type="text" name="" id="cos"></td>
+									<td><input type="text" name="" id="am"></td>
+									<td><input type="text" name="" id="flor"></td>
+									<td><input type="text" name="" id="col"></td>
+									<td><input type="text" name="" id="lug"></td>
+									<td><input type="text" name="" id="pel"></td>
+									<td><input type="text" name="" id="marc"></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="cols-2">
+
+						<table class="table table-primary">
+							<th>
+								Partida 01 <!--Este es un ejemplo-->
+							</th>
+							<tr><td>Rondas</td><td>Tiempo</td></tr>
+							<tr><td>10</td><td>25</td></tr>
+							<tr><th align="center"><button type="button" class="btn btn-outline-primary" onclick="enviarMensaje()">BASTA</button></th></tr>
+						</table>
+						<table class="table table-striped">
+							<thead class="badge-info">
+								<th>Jugando ahora</th>
+							</thead>
+							<tbody id="lista-users">
+
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+	    <script src="/js/bootstrap.js"></script>
+			<script src="/js/jq.js" charset="utf-8"></script>
+		 <script src="/js/socket.io.js"></script>
+		 <script src="/js/logica.js" charset="utf-8"></script>

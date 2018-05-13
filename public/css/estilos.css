@@ -1,0 +1,9 @@
+body{
+    font-family: 'Work Sans', sans-serif;
+}
+.titulo{
+    font-family: 'Pangolin', cursive;
+}
+.borderRadio{
+    border-radius: .5rem;
+}

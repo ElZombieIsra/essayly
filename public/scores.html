@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Score</title>
+
+		 <!-- Required meta tags -->
+	    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	    <!-- Bootstrap CSS -->
+	    <link rel="stylesheet" href="/css/bootstrap.css">
+	    <link rel="stylesheet" type="text/css" href="/css/estilos.css">
+	</head>
+	<body id="score" onload="cargar()">
+
+		<nav class="navbar navbar-dark bg-dark">
+			<a class="navbar-brand" href="index.html"><b id="titulazo">¡BASTA!</b></a>
+				<!-- ES EL FORMATO DE ALERTA. ESTA COMENTADO xD, YA TU PROGRAMALOS PARA QUE SALGA O YO QUE SE.
+				<div class="alert alert-danger" role="alert">Ha ocurrido un error :(.
+					<a href="#" class="alert-link"> Recargar</a>.
+				</div>
+				-->
+		</nav><br><br>
+		<section id="boxy">
+			<div id="opciones2">
+				<div class="container">
+					<div class="row">
+						<div class="cols-8">
+							<h3><b id="texto-complementario">PUNTAJE FINAL :D</b></h3>
+							<!--puedes cambiar esto, solo es texto complementario(nota: cambios que quieras hacer adelante)-->
+							<br><br>
+							<table id="t-score" class="table table-lg table-dark">
+								<thead class="badge-primary">
+									<th scope="col">Posición</th>
+									<th scope="col">Puntaje</th>
+									<th scope="col">Nickname</th>
+								</thead>
+								<tbody id="scorelist">
+
+								</tbody>
+							</table>
+						</div><!--prueba-->
+
+						<div class="cols-4">
+							<div id="bord">
+							<h3>Partida terminada</h3>
+								<br><br>
+								<h5><b>Partidas Totales: </b></h5><br>
+								<button type="button" class="btn btn-success">Reiniciar Ronda</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-danger">Dejar de jugar</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+				<script src="/js/bootstrap.js"></script>
+				<script src="/js/jq.js" charset="utf-8"></script>
+			 <script src="/js/socket.io.js"></script>
+			 <script src="/js/logica.js" charset="utf-8"></script>
+	</body>
+</html>
