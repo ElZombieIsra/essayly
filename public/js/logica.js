@@ -64,7 +64,7 @@ $(()=>{
 });
 
 socket.on('bienvenida_jugador', (data)=>{
-  console.log(data);
+  //console.log(data);
   jugadores = data.jugadores;
   $('#mainContainer').html(data.html);
   cargarJugadores();
@@ -72,7 +72,7 @@ socket.on('bienvenida_jugador', (data)=>{
 
 socket.on('acceso_jugador', (data)=>{
   jugadores.push(data);
-  console.log(jugadores);
+  //console.log(jugadores);
   cargarJugadores();
 });
 
@@ -122,7 +122,7 @@ socket.on('abandono_jugador', (data)=>{
 
 socket.on('juego_terminado', (data)=>{
   let usuario;
-  console.log(jugadores);
+  //console.log(jugadores);
   jugadores.forEach((j, i)=>{
     if(j.id === data) usuario = j.user;
   });
@@ -136,7 +136,7 @@ socket.on('juego_terminado', (data)=>{
     confirmButtonText: 'Votar revancha',
     cancelButtonText: 'Cerrar'
   }).then((result)=>{
-    console.log(result);
+    //console.log(result);
     if (result.value) {
       jugadores = [];
       subject = '';
@@ -180,7 +180,7 @@ socket.on('tiempo-agotado', ()=>{
 });
 
 socket.on('respuestas_usuarios', (data)=>{
-  console.log(data);
+  //console.log(data);
   let respuesta1 = data[0].respuesta,
       respuesta2 = data[1].respuesta,
       id1 = data[0].id,
