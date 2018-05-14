@@ -24,12 +24,12 @@ app.get('/', function (req, res) {
 
 
 io.on('connection', socket => {
-  console.log('Se conectó un usuario', socket.id);
+  //console.log('Se conectó un usuario', socket.id);
 
   socket.on('disconnect', () => {
-    console.log('Se desconectó un usuario', socket.id);
+    //console.log('Se desconectó un usuario', socket.id);
     jugadores = jugadores.filter(j => j.id !=  socket.id);
-    console.log(jugadores);
+    //console.log(jugadores);
     io.emit('abandono_jugador', jugadores);
 	});
 
@@ -46,6 +46,7 @@ io.on('connection', socket => {
   socket.on('respuestas', (data)=>{
     respuestas.push(data);
     if (respuestas.length == 2) {
+      console.log(respuestas);
       jugadores.forEach((j, i)=>{
         if (j.rol == 'Juez') io.to(j.id).emit('respuestas_usuarios', respuestas);
       });
@@ -109,7 +110,7 @@ io.on('connection', socket => {
         socket.broadcast.emit('acceso_jugador', data);
       if (jugadores.length == 3) {
         let judge = Math.floor((Math.random() * jugadores.length));
-        console.log(judge);
+        //console.log(judge);
         jugadores.forEach((j, i)=> {i === judge ? j.rol = 'Juez' : j.rol = 'Competidor'});
         io.emit('iniciando_juego', jugadores);
       }

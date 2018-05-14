@@ -169,6 +169,7 @@ socket.on('juego_iniciado', (data)=>{
 });
 
 socket.on('respuestas_usuarios', (data)=>{
+  console.log(data);
   let respuesta1 = data[0].respuesta,
       respuesta2 = data[1].respuesta,
       id1 = data[0].id,
