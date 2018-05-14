@@ -170,7 +170,13 @@ socket.on('juego_iniciado', (data)=>{
 });
 
 socket.on('tiempo-agotado', ()=>{
-  socket.emit('respuestas', {id: socket.id, respuesta: $('#respuesta').val()});
+  let rol;
+  jugadores.forEach((j, i)=>{
+    j.id == socket.id ? rol = j.rol : '';
+  });
+  if(rol !== 'Juez'){
+    socket.emit('respuestas', {id: socket.id, respuesta: $('#respuesta').val()});
+  }
 });
 
 socket.on('respuestas_usuarios', (data)=>{
