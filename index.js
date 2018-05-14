@@ -44,9 +44,13 @@ io.on('connection', socket => {
   });
 
   socket.on('respuestas', (data)=>{
+    console.log('----------------------')
+    console.log(data);
+    console.log('---//////////////-----');
+    console.log(respuestas);
+    console.log('----------------------');
     respuestas.push(data);
     if (respuestas.length == 2) {
-      console.log(respuestas);
       jugadores.forEach((j, i)=>{
         if (j.rol == 'Juez') io.to(j.id).emit('respuestas_usuarios', respuestas);
       });

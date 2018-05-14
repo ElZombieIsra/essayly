@@ -122,6 +122,7 @@ socket.on('abandono_jugador', (data)=>{
 
 socket.on('juego_terminado', (data)=>{
   let usuario;
+  console.log(jugadores);
   jugadores.forEach((j, i)=>{
     if(j.id === data) usuario = j.user;
   });
@@ -166,6 +167,10 @@ socket.on('juego_iniciado', (data)=>{
   $('#mainColumn').html(textarea);
   $('#asideColumn').html(html);
   intervalo = setInterval(()=>{contar()}, 1000);
+});
+
+socket.on('tiempo-agotado', ()=>{
+  socket.emit('respuestas', {id: socket.id, respuesta: $('#respuesta').val()});
 });
 
 socket.on('respuestas_usuarios', (data)=>{
@@ -218,7 +223,6 @@ function contar(){
   if (cuentaActual < 0) {
     console.log('bye');
     clearInterval(intervalo);
-    socket.emit('respuestas', {id: socket.id, respuesta: $('#respuesta').val()});
     swal({
       title: 'Se acabó el tiempo',
       type: 'info',
