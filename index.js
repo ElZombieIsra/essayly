@@ -56,6 +56,7 @@ io.on('connection', socket => {
     let ganador = data.ganador;
     io.emit('juego_terminado', ganador);
     jugadores = [];
+    respuestas = [];
     subject = '';
     cuentaActual = cuentaAtras;
   });
