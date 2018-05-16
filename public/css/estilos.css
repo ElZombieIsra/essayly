@@ -1,9 +1,29 @@
 body{
-    font-family: 'Work Sans', sans-serif;
+    font-family: 'Skranji', cursive!important;
+    font-size: 1.3rem;
+    color: #080801;
+    background-color: #44ABDF!important;
 }
 .titulo{
-    font-family: 'Pangolin', cursive;
+    font-family: 'Skranji', cursive;
+    color: #080801;
 }
 .borderRadio{
-    border-radius: .5rem;
+    border-width: 0.15rem;
+    border-style: dashed;
+    border-color: #540052;
+    border-radius: 2rem;
+}
+.principalContainer{
+    background-color: #FFFC24!important;
+}
+
+.bttn{
+    font-size: 1rem;
+    font-weight: bold;
+    font-family: 'Skranji', cursive!important;
+    background-color: #44ABDF!important;
+    border-style: dashed!important;
+    border-width: 0.1rem;
+    border-color: #540052;
 }

@@ -9,9 +9,10 @@ var port = process.env.PORT || 8090;
 var jugadores = [];
 var respuestas = [];
 var subject = '';
-var intervalo;
+var intervalo, juezAnterior;
 var cuentaAtras = (1*60);
 var cuentaActual = cuentaAtras;
+var iniciado = false;
 
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -44,13 +45,11 @@ io.on('connection', socket => {
   });
 
   socket.on('respuestas', (data)=>{
-    console.log('----------------------')
-    console.log(data);
-    console.log('---//////////////-----');
-    console.log(respuestas);
-    console.log('----------------------');
     respuestas.push(data);
-    if (respuestas.length == 2) {
+    if (respuestas.length == jugadores.length - 1) {
+      console.log('---//////////////-----');
+      console.log(respuestas);
+      console.log('---//////////////-----');
       jugadores.forEach((j, i)=>{
         if (j.rol == 'Juez') io.to(j.id).emit('respuestas_usuarios', respuestas);
       });
@@ -66,8 +65,38 @@ io.on('connection', socket => {
     cuentaActual = cuentaAtras;
   });
 
+  socket.on('estoy_listo', ()=>{
+    let listos = 0;
+    jugadores.forEach((j, i)=>{
+      if (j.id == socket.id) j.listo = true ;
+      if (j.listo === true) listos++;
+    });
+    io.emit('jugador_listo', socket.id);
+    if(listos === jugadores.length && jugadores.length > 2){
+      let judge = Math.floor((Math.random() * jugadores.length));
+      //console.log(judge);
+      if(!jugadores.includes(juezAnterior)){
+        jugadores.forEach((j, i)=> {
+          if(i === judge ){
+            j.rol = 'Juez';
+            juezAnterior = j;
+          }
+          else{
+            j.rol = 'Competidor'
+          }
+        });
+      }
+      else{
+        jugadores.forEach((j, i)=>{
+          j.rol = (j === juezAnterior) ? 'Juez' : 'Competidor';
+        });
+      }
+      io.emit('iniciando_juego', jugadores);
+    }
+  });
+
   socket.on('inicio_jugador', (data)=>{
-    if (jugadores.length <= 2) {
+    if (!iniciado) {
       jugadores.push(data);
       io.to(data.id).emit(
         'bienvenida_jugador',
@@ -75,20 +104,20 @@ io.on('connection', socket => {
           jugadores: jugadores,
           html: `
         			<div class="row my-2">
-        				<div class="col-md-4">
+        				<div class="col-md">
         					<b class="h4">
         						Jugadores conectados
         					</b>
         				</div>
         			</div>
         			<div class="row">
-        				<div class="col-md-4 col-sm table-responsive">
-        					<table class="table table-dark table-striped table-hover">
+        				<div class="col-md-3 col-sm"> 
+        					<table>
         						<thead>
-        							<tr>
-        								<th scope="col">#</th>
-        								<th scope="col">Nombre</th>
-        								<th scope="col">Rol</th>
+        							<tr class="row">
+        								<th class="col-1">#</th>
+        								<th class="col-7">Nombre</th>
+        								<th class="col-3" id="rolTh"></th>
         							</tr>
         						</thead>
         						<tbody id="lista-users">
@@ -97,13 +126,14 @@ io.on('connection', socket => {
         					</table>
         				</div>
         				<div class="col-md col-sm" id="contenedorPrincipal">
-        					<div class="row p-3">
+                  <div class="row p-3">
+                    <div class="col-md-1"></div>
         						<div class="col-md-8 col-sm" id="mainColumn">
-        							<p class="text-center">
+        							<p class="text-center" id="esperaMsg">
         								Esperando a los demás jugadores . . .
         							</p>
         						</div>
-                    <div class="col-md-4 col-sm" id="asideColumn">
+                    <div class="col-md-3 col-sm" id="asideColumn">
 
                     </div>
         					</div>
@@ -112,15 +142,9 @@ io.on('connection', socket => {
             `
         });
         socket.broadcast.emit('acceso_jugador', data);
-      if (jugadores.length == 3) {
-        let judge = Math.floor((Math.random() * jugadores.length));
-        //console.log(judge);
-        jugadores.forEach((j, i)=> {i === judge ? j.rol = 'Juez' : j.rol = 'Competidor'});
-        io.emit('iniciando_juego', jugadores);
-      }
     }
     else {
-      io.to(data.id).emit('accesso_denegado', 'Lo sentimos, la sala de juego está llena');
+      io.to(data.id).emit('accesso_denegado', 'Lo sentimos, el juego ya ha iniciado');
     }
   });
 });

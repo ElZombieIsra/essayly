@@ -6,52 +6,54 @@
 		<!-- Required meta tags -->
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" href="css/bootstrap.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
 		<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,700" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Pangolin&amp;subset=latin-ext" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Skranji:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 	</head>
-	<body id="base" class="bg-success">
-			<div class="container bg-warning borderRadio p-3 my-4">
-				<div class="row">
-					<div class="col text-center">
-						<div class="display-2">
-							<b class="titulo">Essayly</b>
-						</div>
+	<body id="base">
+		<div class="container bg-warning borderRadio p-3 my-4 principalContainer">
+			<div class="row my-5">
+				<div class="col text-center">
+					<div id="tituloDiv" class="display-2 animated infinite tada">
+						<strong class="titulo">Essayly</strong>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col" id="mainContainer">
-						<div class="row m-2">
-							<div class="col-md"></div>
-							<div class="col-md-6 col-sm justify-content-center">
-								<p class="text-justify">
-									Essayly es un juego donde compites contra tus amigos para ver quién puede describir un tema con más palabras que el otro.
-									<br>
-									Essayly es un juego de palabras en inglés que combina "Essay" que significa "Ensayo" y "Easily" que significa "Fácilmente".
-									<br>
-									Para comenzar a jugar. Escoge un nombre por el que tus amigos te identificaran.
-								</p>
-							</div>
-							<div class="col-md"></div>
+			</div>
+			<div class="row my-4">
+				<div class="col" id="mainContainer">
+					<div class="row m-2">
+						<div class="col-md"></div>
+						<div class="col-md-6 col-sm justify-content-center">
+							<p class="text-justify font-weight-bold">
+								Essayly es un juego donde compites contra tus amigos para ver quién puede describir un tema con más palabras que el otro.
+								<br>
+								Essayly es un juego de palabras en inglés que combina "Essay" que significa "Ensayo" y "Easily" que significa "Fácilmente".
+								<br>
+								Para comenzar a jugar. Escoge un nombre por el que tus amigos te identificaran.
+							</p>
 						</div>
-						<div class="row">
-							<div class="col">
-								<form class="form-inline justify-content-center">
-									<input type="text" class="form-control" placeholder="Usuario" id="username">
-									&nbsp;
-									<button type="button" class="btn btn-dark" id="login">Entrar</button>
-								</form>
-							</div>
+						<div class="col-md"></div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<form class="form-inline justify-content-center">
+								<input type="text" class="form-control" placeholder="Nombre" id="username">
+								&nbsp;
+								<button type="button" class="btn bttn" id="login">Entrar</button>
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2"></script>
-		<script src="js/bootstrap.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/popmotion/dist/popmotion.global.min.js"></script>
 		<script src='js/socket.io.js'></script>
 		<script src='js/logica.js'></script>
 	</body>
