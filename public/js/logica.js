@@ -188,7 +188,7 @@ socket.on('juego_iniciado', (data)=>{
   `;
   $('#mainColumn').html(textarea);
   $('#asideColumn').html(html);
-  intervalo = setIntseterval(()=>{contar()}, 1000);
+  intervalo = setInterval(()=>{contar()}, 1000);
 });
 
 socket.on('tiempo-agotado', ()=>{
@@ -293,7 +293,7 @@ function animacionEspera(){
   else{
     $('#esperaMsg.fadeOutDown').removeClass('fadeOutDown').addClass('fadeInDown');
   }
-  if (espera) setTimeout(animacionEspera, 1500);
+  if (espera) setTimeout(animacionEspera, 2000);
 }
 
 intervaloAnimacion = setInterval(()=>{
