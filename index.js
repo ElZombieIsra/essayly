@@ -163,6 +163,7 @@ io.on('connection', socket => {
 });
 
 function contar(){
+  console.log(cuentaActual);
   if (cuentaActual < 0) {
     console.log('bye');
     clearInterval(intervalo);

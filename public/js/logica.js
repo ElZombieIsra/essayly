@@ -278,7 +278,7 @@ function contar(){
   if (cuentaActual == 15) $('#tiempoCuenta').removeClass('h4').addClass('h2 animated infinite flash');
   if (cuentaActual < 0) {
     $('#tiempoCuenta').removeClass('h2 animated infinite flash').addClass('h4');
-    console.log('bye');
+    //console.log('bye');
     clearInterval(intervalo);
     swal({
       title: 'Se acabó el tiempo',
