@@ -23,6 +23,15 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/public/index.html');
 });
 
+app.get('/restart', (req, res) =>{
+  jugadores = [];
+  respuestas = [];
+  subject = '';
+  cuentaActual = cuentaAtras;
+  iniciado = false;
+  res.send('Reiniciado');
+});
+
 
 io.on('connection', socket => {
   //console.log('Se conectó un usuario', socket.id);
