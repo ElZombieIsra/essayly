@@ -63,6 +63,7 @@ io.on('connection', socket => {
     respuestas = [];
     subject = '';
     cuentaActual = cuentaAtras;
+    iniciado = false;
   });
 
   socket.on('estoy_listo', ()=>{
@@ -74,8 +75,10 @@ io.on('connection', socket => {
     io.emit('jugador_listo', socket.id);
     if(listos === jugadores.length && jugadores.length > 2){
       let judge = Math.floor((Math.random() * jugadores.length));
-      //console.log(judge);
-      if(!jugadores.includes(juezAnterior)){
+      console.log(juezAnterior);
+      console.log('\\\\\\\\\\\\\\\\\\\\\\');
+      console.log(jugadores);
+      if(!jugadores.find(j=>(juezAnterior != undefined ? j.id == juezAnterior.id : false))){
         jugadores.forEach((j, i)=> {
           if(i === judge ){
             j.rol = 'Juez';
@@ -88,10 +91,11 @@ io.on('connection', socket => {
       }
       else{
         jugadores.forEach((j, i)=>{
-          j.rol = (j === juezAnterior) ? 'Juez' : 'Competidor';
+          j.rol = (j.id === juezAnterior.id) ? 'Juez' : 'Competidor';
         });
       }
       io.emit('iniciando_juego', jugadores);
+      iniciado = true;
     }
   });
 

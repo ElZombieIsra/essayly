@@ -110,7 +110,7 @@ socket.on('iniciando_juego', (data)=>{
   jugadores = data;
   cargarJugadores();
   let htmlChallenger = `
-    <div class="h2 text-center">
+    <div class="h2 text-center animated jackInTheBox">
       El Juez está escogiendo el tema.
     </div>
   `;
@@ -132,7 +132,7 @@ socket.on('iniciando_juego', (data)=>{
   `;
   jugadores.forEach((j, i)=>{
     if(j.user == user){
-      j.rol == 'Juez' ? $('#contenedorPrincipal').html(htmlJudge) : $('#mainColumn').html(htmlChallenger);
+      j.rol == 'Juez' ? $('#contenedorPrincipal').html(htmlJudge).addClass(' animated zoomIn') : $('#mainColumn').html(htmlChallenger);
     }
   });
 });
@@ -186,8 +186,8 @@ socket.on('juego_iniciado', (data)=>{
     <label for="respuesta"> Describe el tema lo más rápido que puedas.</label>
     <textarea class="form-control" id="respuesta" rows="5"></textarea>
   `;
-  $('#mainColumn').html(textarea);
-  $('#asideColumn').html(html);
+  $('#mainColumn').html(textarea).addClass('animated rotateInUpRight');
+  $('#asideColumn').html(html).addClass('animated lightSpeedIn');
   intervalo = setInterval(()=>{contar()}, 1000);
 });
 
@@ -214,17 +214,25 @@ socket.on('jugador_listo', (data)=>{
 socket.on('respuestas_usuarios', (data)=>{
   //console.log(data);
   let html = `
-    <div class="row">
+    <div class="row my-2">
       <div class="col-md-1"></div>
   `;
   data.forEach((d, i)=>{
+    console.log(`index ${i} y modulo ${i % 2}`);
+    if(i % 2 === 0 && i != 0) {
+      html += `
+        </div>
+        <div class="row">
+          <div class="col-md-1 my-2"></div>
+      `;
+    }
     html += `
-          <div class="col">
-            <div class="card" style="width: 20vw;">
+          <div class="col-sm col-md-5">
+            <div class="card">
               <div class="card-body">
                 <h4 class="card-title">Competidor ${i+1}</h4>
                 <p class="card-text">${d.respuesta}</p>
-                <a href="#" style="color: #080801;" socketId="${d.id}" class="btn-ganador btn bttn btn-lg">Declarar ganador</a>
+                <a href="#" style="color: #080801;" socketId="${d.id}" class="btn-ganador btn bttn">Declarar ganador</a>
               </div>
             </div>
           </div>
@@ -251,10 +259,10 @@ function cargarJugadores(){
   `;
   jugadores.forEach((j, i)=>{
     html+= `
-      <tr class="row animated bounceInLeft">
+      <tr class="row animated bounceInLeft" ${j.user == user ? 'style="color: #E6542E"' : ''}>
         <td class="col-1">${i+1}</td>
         <td class="col-7">${j.user}</td>
-        <td class="col-3" id="${'ready'+(j.user)}">${j.rol !== '' ? j.rol : (j.listo ? icon : (j.user == user ? `<button class="btn bttn" id="btnReady">Estoy listo</button>` : ``))}<td>
+        <td class="col-3" id="${'ready'+(j.user)}">${j.rol !== '' ? j.rol : (j.listo ? icon : (j.user == user ? `<button class="btn bttn" id="btnReady" style="color: #080801">Estoy listo</button>` : ``))}<td>
       </tr>
     `;
   });
